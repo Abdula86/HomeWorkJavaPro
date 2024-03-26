@@ -5,22 +5,24 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         List<String> words = Arrays.asList("bird", "cat", "dog", "bird", "cat", "dog", "fox", "rabbit", "bird", "cat");
-        System.out.println("Occurrence of 'bird': " + countOccurance(words, "bird"));
+        System.out.println("Occurrence of 'bird': " + StringUtils.countOccurrence(words, "bird"));
 
         Integer[] array = {1, 2, 3};
-        List<Integer> list = toList(array);
+        List<Integer> list = ArrayUtils.toList(array);
         System.out.println("Converted list: " + list);
 
         List<Integer> numbers = Arrays.asList(1, 2, 3, 1, 2, 4, 5, 3, 6, 7, 8, 9, 4, 5);
-        System.out.println("Unique numbers: " + findUnique(numbers));
+        System.out.println("Unique numbers: " + ArrayUtils.findUnique(numbers));
 
-        calcOccurance(words);
+        ArrayUtils.calcOccurrence(words);
 
-        List<WordOccurrence> occurrences = findOccurance(words);
+        List<ArrayUtils.WordOccurrence> occurrences = ArrayUtils.findOccurrence(words);
         System.out.println("Occurrences: " + occurrences);
     }
+}
 
-    public static int countOccurance(List<String> words, String target) {
+class StringUtils {
+    public static int countOccurrence(List<String> words, String target) {
         int count = 0;
         for (String word : words) {
             if (word.equals(target)) {
@@ -29,7 +31,9 @@ public class Main {
         }
         return count;
     }
+}
 
+class ArrayUtils {
     public static <T> List<T> toList(T[] array) {
         return Arrays.asList(array);
     }
@@ -39,7 +43,7 @@ public class Main {
         return new ArrayList<>(uniqueNumbers);
     }
 
-    public static void calcOccurance(List<String> words) {
+    public static void calcOccurrence(List<String> words) {
         Map<String, Integer> occurrences = new HashMap<>();
         for (String word : words) {
             occurrences.put(word, occurrences.getOrDefault(word, 0) + 1);
@@ -64,7 +68,7 @@ public class Main {
         }
     }
 
-    public static List<WordOccurrence> findOccurance(List<String> words) {
+    public static List<WordOccurrence> findOccurrence(List<String> words) {
         Map<String, Integer> occurrences = new HashMap<>();
         for (String word : words) {
             occurrences.put(word, occurrences.getOrDefault(word, 0) + 1);
